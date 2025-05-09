@@ -20,5 +20,3 @@ class ApplicationController < ActionController::Base
     root_path
   end
 end
-
-rails generate devise:views
