@@ -20,8 +20,8 @@
           </div>
           <% if user_signed_in? %>
             <div class="nav__right">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo: "false" }, class: :nav__logout %>
-              <%= link_to "New Proto", class: :nav__btn %>
+              <%= button_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo: "false" }, class: :nav__logout %>
+              <%= link_to "New Proto", "#", class: :nav__btn %>
             </div>
           <% else %>
             <div class="nav__right">
