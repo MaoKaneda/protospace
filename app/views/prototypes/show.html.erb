@@ -1,0 +1,15 @@
+<h2><%= @prototype.title %></h2>
+<p><strong>キャッチコピー:</strong> <%= @prototype.catch_copy %></p>
+<p><strong>コンセプト:</strong> <%= @prototype.concept %></p>
+<p><strong>投稿者:</strong> <%= @prototype.user.name %></p>
+<% if @prototype.image.attached? %>
+  <div>
+    <%= image_tag @prototype.image, style: 'max-width: 400px;' %>
+  </div>
+<% end %>
+
+<% if user_signed_in? && current_user == @prototype.user %>
+  <%= link_to '編集', edit_prototype_path(@prototype), class: 'btn' %> |
+  <%= button_to '削除', prototype_path(@prototype), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn' %>
+<% end %>
+<%= link_to '一覧に戻る', root_path, class: 'btn' %> 

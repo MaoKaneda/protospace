@@ -8,7 +8,15 @@
     <% end %>
     <%# // ログインしているときは上記を表示する %>
     <div class="card__wrapper">
-      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <% @prototypes.each do |prototype| %>
+        <div class="card">
+          <% if prototype.image.attached? %>
+            <%= link_to image_tag(prototype.image, style: 'max-width: 200px;'), prototype_path(prototype) %>
+          <% end %>
+          <h3><%= link_to prototype.title, prototype_path(prototype) %></h3>
+          <p>投稿者: <%= prototype.user.name %></p>
+        </div>
+      <% end %>
     </div>
   </div>
 </main>
