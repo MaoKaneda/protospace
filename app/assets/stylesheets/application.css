@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+.actions input[type="submit"] {
+  background-color: #4fc3f7; /* 明るい青色 */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 32px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #0288d1; /* 濃い青色 */
+}
+
