@@ -12,9 +12,8 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @prototype = current_user.prototypes.build(prototype_params)
     if @prototype.save
-      redirect_to root_path, notice: 'プロトタイプを投稿しました'
+      redirect_to root_path
     else
       render :new
     end
@@ -28,7 +27,7 @@ class PrototypesController < ApplicationController
 
   def update
     if @prototype.update(prototype_params)
-      redirect_to root_path, notice: 'プロトタイプを更新しました'
+      redirect_to prototype_path(@prototype), notice: 'プロトタイプを更新しました'
     else
       render :edit
     end
