@@ -11,5 +11,3 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: 'prototypes#index'
 end
-
-
