@@ -4,5 +4,5 @@
   <% end %>
   <h3><%= link_to prototype.title, root_path %></h3>
   <p><%= prototype.catch_copy %></p>
-  <p>投稿者: <%= prototype.user.name %></p>
+  <p>投稿者: <%= link_to prototype.user.name, user_path(prototype.user), class: :card__user %></p>
 </div> 
