@@ -12,14 +12,17 @@ class PrototypesController < ApplicationController
   end
 
   def create
+    @prototype = Prototype.new(prototype_params)
     if @prototype.save
       redirect_to root_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def show
+    @comment = Comment.new
+    @comments = @prototype.comments.includes(:user)
   end
 
   def edit
@@ -27,21 +30,21 @@ class PrototypesController < ApplicationController
 
   def update
     if @prototype.update(prototype_params)
-      redirect_to prototype_path(@prototype), notice: 'プロトタイプを更新しました'
+      redirect_to prototype_path(@prototype)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @prototype.destroy
-    redirect_to root_path, notice: 'プロトタイプを削除しました'
+    redirect_to root_path
   end
 
   private
 
   def prototype_params
-    params.require(:prototype).permit(:title, :catch_copy, :concept, :image)
+    params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
   end
 
   def set_prototype
@@ -49,6 +52,8 @@ class PrototypesController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless @prototype.user == current_user
+    unless current_user == @prototype.user
+      redirect_to action: :index
+    end
   end
 end
