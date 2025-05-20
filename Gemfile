@@ -69,3 +69,8 @@ end
 
 gem 'devise'
 gem "mini_magick"
+
+# 本番環境用のgem
+group :production do
+  gem 'aws-sdk-s3'
+end
