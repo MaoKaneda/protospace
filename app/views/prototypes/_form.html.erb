@@ -24,6 +24,12 @@
   </div>
   <div class="field">
     <%= f.label :image, 'プロトタイプの画像' %><br>
+    <% if prototype.image.attached? %>
+      <div class="current-image">
+        <p>現在の画像:</p>
+        <%= image_tag prototype.image, class: :current_image %>
+      </div>
+    <% end %>
     <%= f.file_field :image %>
   </div>
   <div class="actions">
