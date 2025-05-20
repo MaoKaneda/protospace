@@ -1,8 +1,8 @@
 <div class="card">
   <% if prototype.image.attached? %>
-    <%= link_to image_tag(prototype.image, style: 'max-width: 200px;'), prototype_path(prototype) %>
+    <%= link_to image_tag(prototype.image, class: :card__img), prototype_path(prototype) %>
   <% end %>
-  <h3><%= link_to prototype.title, prototype_path(prototype) %></h3>
-  <p><%= prototype.catch_copy %></p>
-  <p>投稿者: <%= link_to prototype.user.name, user_path(prototype.user), class: :card__user %></p>
+  <h3 class="card__title"><%= link_to prototype.title, prototype_path(prototype) %></h3>
+  <p class="card__summary"><%= prototype.catch_copy %></p>
+  <p class="card__user">投稿者: <%= link_to prototype.user.name, user_path(prototype.user), class: :card__user %></p>
 </div> 
