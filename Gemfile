@@ -72,5 +72,6 @@ gem "mini_magick"
 
 # 本番環境用のgem
 group :production do
+  gem 'pg'
   gem 'aws-sdk-s3'
 end
