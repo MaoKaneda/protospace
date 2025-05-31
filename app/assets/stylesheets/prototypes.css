@@ -1,21 +1,68 @@
+.nav__right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav__btn {
+  background: #fff;
+  border: 1px solid #00bfff;
+  color: #00bfff;
+  padding: 6px 18px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 0;
+}
+
+.nav__btn:hover {
+  background: #00bfff;
+  color: #fff;
+}
+
+.nav__logout {
+  border-color: #ff6666;
+  color: #ff6666;
+}
+
+.nav__logout:hover {
+  background: #ff6666;
+  color: #fff;
+}
+
+.card__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: flex-start;
+}
+
 .card {
+  width: 320px;
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   padding: 20px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card__img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
   border-radius: 5px;
+  background: #f5f8fa;
 }
 
 .card__title {
   font-size: 1.2em;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
+  font-weight: bold;
 }
 
 .card__title a {
@@ -35,6 +82,7 @@
 .card__user {
   color: #888;
   font-size: 0.9em;
+  margin-top: 8px;
 }
 
 .card__user a {
@@ -43,5 +91,77 @@
 }
 
 .card__user a:hover {
+  text-decoration: underline;
+}
+
+.prototype-detail {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 32px;
+  text-align: center;
+}
+
+.prototype-detail__image {
+  width: 100%;
+  max-width: 400px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f5f8fa;
+  margin-bottom: 24px;
+}
+
+.prototype-detail__title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.prototype-detail__catchcopy {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.prototype-detail__concept {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.prototype-detail__user {
+  color: #888;
+  font-size: 0.95em;
+  margin-bottom: 24px;
+}
+
+.container__comments {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.comments_lists {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comments_list {
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+  color: #333;
+}
+
+.comment_user {
+  color: #007bff;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+.comment_user:hover {
   text-decoration: underline;
 } 

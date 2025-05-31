@@ -1,6 +1,6 @@
 <% if prototype.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(prototype.errors.count, "error") %> prohibited this prototype from being saved:</h3>
+  <div id="error_explanation" style="background:#ffeaea;border:1px solid #ff6666;color:#c00;padding:12px 20px;margin-bottom:20px;border-radius:6px;">
+    <h3><%= pluralize(prototype.errors.count, "件のエラー") %>が発生しました:</h3>
     <ul>
       <% prototype.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
