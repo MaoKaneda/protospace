@@ -1,24 +1,12 @@
 <div class="card">
-  <%= link_to prototype_path(prototype) do %>
-    <% if prototype.image.attached? %>
-      <%= image_tag(prototype.image, class: :card__img) %>
-    <% end %>
-    <div class="card__body">
-      <h3 class="card__title"><%= prototype.title %></h3>
-      <p class="card__summary"><%= prototype.catch_copy %></p>
-      <p class="card__user">by <%= prototype.user.name %></p>
-    </div>
+  <% if prototype.image.attached? %>
+    <%= link_to image_tag(prototype.image, class: :card__img), prototype_path(prototype) %>
   <% end %>
-</div>
-
-<div class="prototype-detail">
-  <% if @prototype.image.attached? %>
-    <%= image_tag @prototype.image, class: "prototype-detail__image" %>
-  <% end %>
-  <h2 class="prototype-detail__title"><%= @prototype.title %></h2>
-  <p class="prototype-detail__catchcopy"><%= @prototype.catch_copy %></p>
-  <p class="prototype-detail__concept"><%= @prototype.concept %></p>
-  <p class="prototype-detail__user">by <%= link_to @prototype.user.name, user_path(@prototype.user) %></p>
+  <div class="card__body">
+    <h3 class="card__title"><%= prototype.title %></h3>
+    <p class="card__summary"><%= prototype.catch_copy %></p>
+    <p class="card__user">by <%= link_to prototype.user.name, user_path(prototype.user) %></p>
+  </div>
 </div>
 
 
