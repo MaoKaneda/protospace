@@ -1,10 +1,24 @@
 <div class="card">
-  <% if prototype.image.attached? %>
-    <%= link_to image_tag(prototype.image, class: :card__img), prototype_path(prototype) %>
+  <%= link_to prototype_path(prototype) do %>
+    <% if prototype.image.attached? %>
+      <%= image_tag(prototype.image, class: :card__img) %>
+    <% end %>
+    <div class="card__body">
+      <h3 class="card__title"><%= prototype.title %></h3>
+      <p class="card__summary"><%= prototype.catch_copy %></p>
+      <p class="card__user">by <%= prototype.user.name %></p>
+    </div>
   <% end %>
-  <h3 class="card__title"><%= link_to prototype.title, prototype_path(prototype) %></h3>
-  <p class="card__summary"><%= prototype.catch_copy %></p>
-  <p class="card__user">投稿者: <%= link_to prototype.user.name, user_path(prototype.user), class: :card__user %></p>
-</div> 
+</div>
+
+<div class="prototype-detail">
+  <% if @prototype.image.attached? %>
+    <%= image_tag @prototype.image, class: "prototype-detail__image" %>
+  <% end %>
+  <h2 class="prototype-detail__title"><%= @prototype.title %></h2>
+  <p class="prototype-detail__catchcopy"><%= @prototype.catch_copy %></p>
+  <p class="prototype-detail__concept"><%= @prototype.concept %></p>
+  <p class="prototype-detail__user">by <%= link_to @prototype.user.name, user_path(@prototype.user) %></p>
+</div>
 
 
