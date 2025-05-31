@@ -1,20 +1,18 @@
-<h2><%= @prototype.title %></h2>
-<p><strong>キャッチコピー:</strong> <%= @prototype.catch_copy %></p>
-<p><strong>コンセプト:</strong> <%= @prototype.concept %></p>
-<p><strong>投稿者:</strong> <%= link_to @prototype.user.name, user_path(@prototype.user), class: :card__user %></p>
-<% if @prototype.image.attached? %>
-  <div>
-    <%= image_tag @prototype.image, style: 'max-width: 400px;' %>
-  </div>
-<% end %>
+<div class="prototype-detail">
+  <% if @prototype.image.attached? %>
+    <%= image_tag @prototype.image, class: "prototype-detail__image" %>
+  <% end %>
+  <h2 class="prototype-detail__title"><%= @prototype.title %></h2>
+  <p class="prototype-detail__catchcopy"><%= @prototype.catch_copy %></p>
+  <p class="prototype-detail__concept"><%= @prototype.concept %></p>
+  <p class="prototype-detail__user">by <%= link_to @prototype.user.name, user_path(@prototype.user) %></p>
+</div>
 
 <% if user_signed_in? && current_user == @prototype.user %>
   <%= link_to '編集', edit_prototype_path(@prototype), class: 'btn' %> |
   <%= button_to '削除', prototype_path(@prototype), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn' %>
 <% end %>
 <%= link_to '一覧に戻る', root_path, class: 'btn' %>
-
-<%= render "prototypes/prototype", prototype: @prototype %>
 
 <div class="container__comments">
   <% if user_signed_in? %>
