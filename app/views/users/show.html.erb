@@ -1,64 +1,46 @@
-<main class="main">
+<div class="main">
   <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <%# <%= "ユーザー名さんの情報"%>
+        <%="#{@user.name}さんの情報"%>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">名前</th>
+            <%# <td class="table__col2"><%= "ユーザー名"</td>  %>
+            <td class="table__col2"><%=@user.name%></td>
+          </tr>
+          <tr>
+            <th class="table__col1">プロフィール</th>
+            <%# <td class="table__col2"><%= "ユーザーのプロフィール"</td>  %>
+            <td class="table__col2"><%= @user.profile %></td>
 
-    <!-- プロトタイプ詳細ラッパー -->
-    <div class="prototype__wrapper">
+          </tr>
+          <tr>
+            <th class="table__col1">所属</th>
+            <%# <td class="table__col2"><%= "ユーザーの所属"</td>  %>
+            <td class="table__col2"><%= @user.occupation %></td>
 
-      <%= link_to "by #{@prototype.user.name}", user_path(@prototype.user), class: :prototype__user %>
-      <p class="prototype__hedding">
-        <%= @prototype.title %>
-      </p>
+          </tr>
+          <tr>
+            <th class="table__col1">役職</th>
+              <%# <td class="table__col2"><%= "ユーザーの役職"</td> %>
+              <td class="table__col2"><%= @user.position %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="page-heading">
+        <%# <%= "ユーザー名さんのプロトタイプ"%>
+        <%= "#{@user.name}さんのプロトタイプ"%>
 
-      <%# 編集・削除ボタン %>
-      <% if user_signed_in? && current_user.id == @prototype.user_id %>
-        <div class="prototype__manage">
-          <%= link_to "編集する", edit_prototype_path(@prototype), class: :prototype__btn %>
-          <%= link_to "削除する", prototype_path(@prototype), data: { turbo_method: :delete }, class: :prototype__btn %>
-        </div>
-      <% end %>
+      </h2>
+      <div class="user__card">
+        <%# 部分テンプレートでそのユーザーが投稿したプロトタイプ投稿一覧を表示する %>
+              <%= render partial: "prototypes/prototype", collection: @prototypes  %>
 
-      <div class="prototype__image">
-        <%= image_tag @prototype.image, class: "prototype-detail__image" %>
-      </div>
-
-      <div class="prototype__body">
-        <div class="prototype__detail">
-          <p class="detail__title">キャッチコピー</p>
-          <p class="detail__message">
-            <%= @prototype.catch_copy %>
-          </p>
-        </div>
-
-        <div class="prototype__detail">
-          <p class="detail__title">コンセプト</p>
-          <p class="detail__message">
-            <%= @prototype.concept %>
-          </p>
-        </div>
-      </div>
-
-      <!-- コメント欄 -->
-      <div class="prototype__comments">
-        <% if user_signed_in? %>
-          <%= form_with(model: [@prototype, @comment],local: true) do |f|%>
-            <div class="field">
-              <%= f.label :content, "コメント" %><br />
-              <%= f.text_field :content, id:"comment_content" %>
-            </div>
-            <div class="actions">
-              <%= f.submit "送信する", class: :form__btn  %>
-            </div>
-          <% end %>
-        <% end %>
-        <ul class="comments_lists">
-          <% @comments.each do |comment| %>
-            <li class="comments_list">
-              <%= comment.content %>
-              <%= link_to comment.user.name, user_path(comment.user), class: :comment_user %>
-            </li>
-          <% end %>
-        </ul>
       </div>
     </div>
   </div>
-</main>
+</div>
